@@ -20,10 +20,18 @@
         <td><%= link_to 'Edit', edit_article_path(article) %></td>
         <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% if article.photo.attached? %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path article.photo.key, height: 300, crop: :fill %>')">
+          <%= article.title %>
+        </div>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+<%= cl_image_tag("stmkxtnbot3iduhloywd",
+      width: 400, height: 300, crop: :fill) %>
 
 <%= link_to 'New Article', new_article_path %>
